@@ -20,13 +20,15 @@ public abstract class Pedido {
 
     }
 
+    protected abstract boolean validarPedido();
+
     protected abstract int calcularTiempoEntrega();
 
     protected abstract void asignarRepartidor();
 
     protected abstract void asignarRepartidor(String nombreRepartidor);
 
-    protected void mostrarResumen() {
+    public void mostrarResumen() {
         String textoResumen = """
                 ===================
                 %s #%s
