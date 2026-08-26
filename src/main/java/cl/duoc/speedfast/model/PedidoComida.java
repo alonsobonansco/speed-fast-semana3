@@ -1,10 +1,12 @@
 package cl.duoc.speedfast.model;
 
+import cl.duoc.speedfast.strategy.DespachoStrategy;
+
 public class PedidoComida extends Pedido {
     private boolean mochilaEnBuenEstado;
 
-    public PedidoComida(String idPedido, String direccionEntrega, double distanciaKm, boolean mochilaEnBuenEstado) {
-        super("PEDIDO COMIDA", idPedido, direccionEntrega, distanciaKm);
+    public PedidoComida(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho, boolean mochilaEnBuenEstado) {
+        super("PEDIDO COMIDA", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
         this.mochilaEnBuenEstado = mochilaEnBuenEstado;
     }
 

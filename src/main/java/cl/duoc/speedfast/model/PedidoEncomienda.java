@@ -1,12 +1,14 @@
 package cl.duoc.speedfast.model;
 
+import cl.duoc.speedfast.strategy.DespachoStrategy;
+
 public class PedidoEncomienda extends Pedido {
 
     private static final double CAPACIDAD_MAXIMA_KG = 40.0;
     private final double pesoEncomienda;
 
-    public PedidoEncomienda(String idPedido, String direccionEntrega, double distanciaKm, double pesoEncomienda) {
-        super("PEDIDO ENCOMIENDA", idPedido, direccionEntrega, distanciaKm);
+    public PedidoEncomienda(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho, double pesoEncomienda) {
+        super("PEDIDO ENCOMIENDA", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
 
         if (pesoEncomienda <= 0) {
             throw new IllegalArgumentException("El peso de la encomienda debe ser válido.");

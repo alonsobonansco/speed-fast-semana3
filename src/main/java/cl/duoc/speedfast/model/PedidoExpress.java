@@ -1,11 +1,13 @@
 package cl.duoc.speedfast.model;
 
+import cl.duoc.speedfast.strategy.DespachoStrategy;
+
 public class PedidoExpress extends Pedido {
 
     private static final double LIMITE_DISTANCIA_KM = 20;
 
-    public PedidoExpress(String idPedido, String direccionEntrega, double distanciaKm) {
-        super("PEDIDO EXPRESS", idPedido, direccionEntrega, distanciaKm);
+    public PedidoExpress(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
+        super("PEDIDO EXPRESS", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
     }
 
     @Override

@@ -1,12 +1,15 @@
 package cl.duoc.speedfast.model;
 
-public abstract class Pedido {
+import cl.duoc.speedfast.strategy.DespachoStrategy;
+
+public abstract class Pedido implements Despachable {
     private final String tipoPedido;
     private final String idPedido;
     private String direccionEntrega;
     private final double distanciaKm;
+    protected DespachoStrategy estrategiaDespacho;
 
-    public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm) {
+    public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
         if (idPedido == null || idPedido.isBlank()) {
             throw new IllegalArgumentException("El ID del pedido no puede estar vacío.");
         }
@@ -17,7 +20,11 @@ public abstract class Pedido {
         this.idPedido = idPedido;
         setDireccionEntrega(direccionEntrega);
         this.distanciaKm = distanciaKm;
+        this.estrategiaDespacho = estrategiaDespacho;
+    }
 
+    public void despachar() {
+        estrategiaDespacho.despacharPedido();
     }
 
     protected abstract boolean validarPedido();
