@@ -16,6 +16,7 @@ public class PedidoComida extends Pedido {
 
         if (!mochilaEnBuenEstado) {
             System.out.println("[ERROR] Mochila térmica en mal estado.\n");
+            this.cancelar();
             return false;
         }
 
@@ -23,15 +24,17 @@ public class PedidoComida extends Pedido {
         return true;
     }
 
+    @Override
     protected int calcularTiempoEntrega() {
         return (int) (15 + 2 * getDistanciaKm());
     }
 
+    @Override
     public void asignarRepartidor() {
         System.out.println("Buscando un repartidor disponible para un pedido de comida...");
     }
 
-    public void asignarRepartidor(String nombreRepartidor) {
-        System.out.println("Pedido de comida asignado a " + nombreRepartidor + ".\n");
+    public void setMochilaEnBuenEstado(boolean mochilaEnBuenEstado) {
+        this.mochilaEnBuenEstado = mochilaEnBuenEstado;
     }
 }
