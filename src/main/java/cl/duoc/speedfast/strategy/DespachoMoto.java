@@ -6,6 +6,6 @@ public class DespachoMoto implements DespachoStrategy {
 
     @Override
     public void despacharPedido(Pedido pedido) {
-        System.out.println("El pedido está siendo despachado en moto.\n\n");
+        System.out.println("→ El pedido está siendo despachado en moto.\n");
     }
 }

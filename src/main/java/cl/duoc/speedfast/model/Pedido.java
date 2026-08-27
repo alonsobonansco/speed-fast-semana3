@@ -11,6 +11,7 @@ public abstract class Pedido implements Despachable, Cancelable {
     private final double distanciaKm;
     protected boolean pedidoActivo = true;
     protected DespachoStrategy estrategiaDespacho;
+    protected String nombreRepartidor = "No asignado";
 
     public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
         if (idPedido == null || idPedido.isBlank()) {
@@ -29,7 +30,7 @@ public abstract class Pedido implements Despachable, Cancelable {
     @Override
     public void despachar() {
         if (!pedidoActivo) {
-            System.out.println("No se puede despachar un pedido cancelado.");
+            System.out.println("No se puede despachar un pedido cancelado.\n");
             return;
         }
         estrategiaDespacho.despacharPedido(this);
@@ -42,11 +43,11 @@ public abstract class Pedido implements Despachable, Cancelable {
     @Override
     public void cancelar() {
         if (!pedidoActivo) {
-            System.out.println("El pedido #" + idPedido + " ya se encuentra cancelado.\n\n");
+            System.out.println("El pedido #" + idPedido + " ya se encuentra cancelado.\n");
             return;
         }
         pedidoActivo = false;
-        System.out.println("El pedido #" + idPedido + " ha sido cancelado.\n\n");
+        System.out.println("El pedido #" + idPedido + " ha sido cancelado.\n");
     }
 
     public abstract boolean validarPedido();
@@ -55,11 +56,14 @@ public abstract class Pedido implements Despachable, Cancelable {
 
     public abstract void asignarRepartidor();
 
-    public abstract void asignarRepartidor(String nombreRepartidor);
+    public void asignarRepartidor(String nombreRepartidor) {
+        this.nombreRepartidor = nombreRepartidor;
+        System.out.println("[" + tipoPedido + " #" + idPedido + "] asignado a " + nombreRepartidor + ".\n");
+    }
 
     public void mostrarResumen() {
         String textoResumen = """
-                ===================
+                \n===================
                 %s #%s
                 ===================
                 
@@ -92,6 +96,10 @@ public abstract class Pedido implements Despachable, Cancelable {
         return distanciaKm;
     }
 
+    public String getNombreRepartidor() {
+        return nombreRepartidor;
+    }
+
     public void setDireccionEntrega(String direccionEntrega) {
         if (direccionEntrega == null || direccionEntrega.isBlank()) {
             throw new IllegalArgumentException("La dirección de entrega debe ser válida.");
@@ -99,7 +107,11 @@ public abstract class Pedido implements Despachable, Cancelable {
         this.direccionEntrega = direccionEntrega;
     }
 
-    public boolean isPedidoActivo() {return pedidoActivo;}
+    public boolean isPedidoActivo() {
+        return pedidoActivo;
+    }
 
-    public void setPedidoActivo(boolean pedidoActivo) {this.pedidoActivo = pedidoActivo;}
+    public void setPedidoActivo(boolean pedidoActivo) {
+        this.pedidoActivo = pedidoActivo;
+    }
 }

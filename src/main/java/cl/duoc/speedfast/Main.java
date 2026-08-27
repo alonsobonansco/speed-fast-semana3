@@ -10,7 +10,7 @@ import cl.duoc.speedfast.strategy.DespachoCamion;
 import cl.duoc.speedfast.strategy.DespachoMoto;
 
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
         ControladorDeEnvios gestor = new ControladorDeEnvios();
         //estor.ejecutarDemostracion();
 
@@ -22,9 +22,8 @@ public class Main {
                 "003", "Calle Principal 123", 14.0,
                 new DespachoCamion(), 84.0);
 
-        // ==========================================
-        // PROCESAMIENTO PEDIDO #001 (COMIDA CON CAMBIO DE ESTRATEGIA)
-        // ==========================================
+
+        // PROCESAMIENTO PEDIDO COMIDA #001 (CON CAMBIO DE ESTRATEGIA)
         pedidoComida.mostrarResumen();
         pedidoComida.asignarRepartidor();
         pedidoComida.asignarRepartidor("Roberto");
@@ -33,21 +32,27 @@ public class Main {
             pedidoComida.despachar();
         }
 
-        System.out.println("Condiciones climáticas obligan a cambiar de vehículo de despacho...");
+        System.out.println("[Condiciones climáticas obligan a cambiar de vehículo de despacho...]\n");
+        // La estrategia cambia de Moto a Auto
         pedidoComida.setEstrategiaDespacho(new DespachoAuto());
         pedidoComida.despachar();
+        gestor.registrarEstadoPedido(pedidoComida);
 
-        // ==========================================
-        // PROCESAMIENTO PEDIDO #002 (EXPRESS CON CANCELACIÓN)
-        // ==========================================
+
+        // PROCESAMIENTO PEDIDO EXPRESS #002
         pedidoExpress.mostrarResumen();
-        pedidoExpress.cancelar();
-        pedidoExpress.despachar();
-        pedidoExpress.cancelar();
+        pedidoExpress.asignarRepartidor();
+        pedidoExpress.asignarRepartidor("Mario");
 
-        // ==========================================
-        // PROCESAMIENTO PEDIDO #003 (ENCOMIENDA)
-        // ==========================================
+        if (pedidoExpress.validarPedido()) {
+            pedidoExpress.despachar();
+        }
+
+        gestor.registrarEstadoPedido(pedidoExpress);
+
+
+        // PROCESAMIENTO PEDIDO ENCOMIENDA #003 (CON CANCELACIÓN)
+        // La cancelación ocurre internamente al (validarPedido) y este no pasa el control
         pedidoEncomienda.mostrarResumen();
         pedidoEncomienda.asignarRepartidor();
         pedidoEncomienda.asignarRepartidor("Luciano");
@@ -56,7 +61,10 @@ public class Main {
             pedidoEncomienda.despachar();
         }
 
+        gestor.registrarEstadoPedido(pedidoEncomienda);
 
+        // HISTORIAL DEL ESTADO DE TODOS LOS PEDIDOS
+        gestor.verHistorial();
 
     }
 }

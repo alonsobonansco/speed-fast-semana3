@@ -6,6 +6,6 @@ public class DespachoAuto implements DespachoStrategy {
 
     @Override
     public void despacharPedido(Pedido pedido) {
-        System.out.println("El pedido está siendo despachado en auto.\n\n");
+        System.out.println("→ El pedido está siendo despachado en auto.\n");
     }
 }
