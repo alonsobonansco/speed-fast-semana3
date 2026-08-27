@@ -4,7 +4,7 @@ import cl.duoc.speedfast.strategy.DespachoStrategy;
 
 import java.util.List;
 
-public abstract class Pedido implements Despachable, Cancelable/*, Rastreable*/ {
+public abstract class Pedido implements Despachable, Cancelable {
     private final String tipoPedido;
     private final String idPedido;
     private String direccionEntrega;
@@ -29,20 +29,11 @@ public abstract class Pedido implements Despachable, Cancelable/*, Rastreable*/ 
     @Override
     public void despachar() {
         if (!pedidoActivo) {
-            System.out.println("No se puede despachar un pedido inactivo.");
+            System.out.println("No se puede despachar un pedido cancelado.");
             return;
         }
         estrategiaDespacho.despacharPedido(this);
     }
-
-    /*@Override
-    public void despachar() {
-        if (!validarPedido()) {
-            System.out.println("El pedido no pasó los controles de seguridad, no puede ser despachado.");
-            return;
-        }
-        estrategiaDespacho.despacharPedido(this);
-    }*/
 
     public void setEstrategiaDespacho(DespachoStrategy estrategiaDespacho) {
         this.estrategiaDespacho = estrategiaDespacho;
@@ -57,11 +48,6 @@ public abstract class Pedido implements Despachable, Cancelable/*, Rastreable*/ 
         pedidoActivo = false;
         System.out.println("El pedido #" + idPedido + " ha sido cancelado.\n\n");
     }
-
-    /*@Override
-    public List<String> verHistorial() {
-        return "Hola";
-    }*/
 
     public abstract boolean validarPedido();
 
