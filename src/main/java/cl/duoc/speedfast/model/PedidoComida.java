@@ -1,15 +1,17 @@
 package cl.duoc.speedfast.model;
 
+import cl.duoc.speedfast.strategy.DespachoStrategy;
+
 public class PedidoComida extends Pedido {
     private boolean mochilaEnBuenEstado;
 
-    public PedidoComida(String idPedido, String direccionEntrega, double distanciaKm, boolean mochilaEnBuenEstado) {
-        super("PEDIDO COMIDA", idPedido, direccionEntrega, distanciaKm);
+    public PedidoComida(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho, boolean mochilaEnBuenEstado) {
+        super("PEDIDO COMIDA", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
         this.mochilaEnBuenEstado = mochilaEnBuenEstado;
     }
 
     @Override
-    protected boolean validarPedido() {
+    public boolean validarPedido() {
         System.out.println("Verificando que la mochila térmica esté en buen estado...");
 
         if (!mochilaEnBuenEstado) {
@@ -25,11 +27,11 @@ public class PedidoComida extends Pedido {
         return (int) (15 + 2 * getDistanciaKm());
     }
 
-    protected void asignarRepartidor() {
-
+    public void asignarRepartidor() {
+        System.out.println("Buscando un repartidor disponible para un pedido de comida...");
     }
 
-    protected void asignarRepartidor(String nombreRepartidor) {
-
+    public void asignarRepartidor(String nombreRepartidor) {
+        System.out.println("Pedido de comida asignado a " + nombreRepartidor + ".\n");
     }
 }
