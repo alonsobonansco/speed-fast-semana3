@@ -1,5 +1,7 @@
 package cl.duoc.speedfast.strategy;
 
+import cl.duoc.speedfast.model.Pedido;
+
 public interface DespachoStrategy {
-    void despacharPedido();
+    void despacharPedido(Pedido pedido);
 }

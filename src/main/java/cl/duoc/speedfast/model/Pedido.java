@@ -2,11 +2,14 @@ package cl.duoc.speedfast.model;
 
 import cl.duoc.speedfast.strategy.DespachoStrategy;
 
-public abstract class Pedido implements Despachable {
+import java.util.List;
+
+public abstract class Pedido implements Despachable, Cancelable/*, Rastreable*/ {
     private final String tipoPedido;
     private final String idPedido;
     private String direccionEntrega;
     private final double distanciaKm;
+    protected boolean pedidoActivo = true;
     protected DespachoStrategy estrategiaDespacho;
 
     public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
@@ -23,17 +26,50 @@ public abstract class Pedido implements Despachable {
         this.estrategiaDespacho = estrategiaDespacho;
     }
 
+    @Override
     public void despachar() {
-        estrategiaDespacho.despacharPedido();
+        if (!pedidoActivo) {
+            System.out.println("No se puede despachar un pedido inactivo.");
+            return;
+        }
+        estrategiaDespacho.despacharPedido(this);
     }
 
-    protected abstract boolean validarPedido();
+    /*@Override
+    public void despachar() {
+        if (!validarPedido()) {
+            System.out.println("El pedido no pasó los controles de seguridad, no puede ser despachado.");
+            return;
+        }
+        estrategiaDespacho.despacharPedido(this);
+    }*/
+
+    public void setEstrategiaDespacho(DespachoStrategy estrategiaDespacho) {
+        this.estrategiaDespacho = estrategiaDespacho;
+    }
+
+    @Override
+    public void cancelar() {
+        if (!pedidoActivo) {
+            System.out.println("El pedido #" + idPedido + " ya se encuentra cancelado.\n\n");
+            return;
+        }
+        pedidoActivo = false;
+        System.out.println("El pedido #" + idPedido + " ha sido cancelado.\n\n");
+    }
+
+    /*@Override
+    public List<String> verHistorial() {
+        return "Hola";
+    }*/
+
+    public abstract boolean validarPedido();
 
     protected abstract int calcularTiempoEntrega();
 
-    protected abstract void asignarRepartidor();
+    public abstract void asignarRepartidor();
 
-    protected abstract void asignarRepartidor(String nombreRepartidor);
+    public abstract void asignarRepartidor(String nombreRepartidor);
 
     public void mostrarResumen() {
         String textoResumen = """
@@ -76,4 +112,8 @@ public abstract class Pedido implements Despachable {
         }
         this.direccionEntrega = direccionEntrega;
     }
+
+    public boolean isPedidoActivo() {return pedidoActivo;}
+
+    public void setPedidoActivo(boolean pedidoActivo) {this.pedidoActivo = pedidoActivo;}
 }

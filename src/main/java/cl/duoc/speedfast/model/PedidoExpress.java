@@ -11,7 +11,7 @@ public class PedidoExpress extends Pedido {
     }
 
     @Override
-    protected boolean validarPedido() {
+    public boolean validarPedido() {
         System.out.println("Verificando que la distancia esté dentro del límite permitido...");
 
         if (getDistanciaKm() > LIMITE_DISTANCIA_KM) {
@@ -27,11 +27,11 @@ public class PedidoExpress extends Pedido {
         return (getDistanciaKm() > 5) ? 15 : 10;
     }
 
-    protected void asignarRepartidor() {
-
+    public void asignarRepartidor() {
+        System.out.println("Buscando un repartidor disponible para un pedido express...");
     }
 
-    protected void asignarRepartidor(String nombreRepartidor) {
-
+    public void asignarRepartidor(String nombreRepartidor) {
+        System.out.println("Pedido express asignado a " + nombreRepartidor + ".\n");
     }
 }

@@ -17,7 +17,7 @@ public class PedidoEncomienda extends Pedido {
     }
 
     @Override
-    protected boolean validarPedido() {
+    public boolean validarPedido() {
         System.out.println("Verificando que el peso de la encomienda no exceda el límite...");
 
         if (pesoEncomienda > CAPACIDAD_MAXIMA_KG) {
@@ -33,11 +33,11 @@ public class PedidoEncomienda extends Pedido {
         return (int) (20 + 1.5 * getDistanciaKm());
     }
 
-    protected void asignarRepartidor() {
-
+    public void asignarRepartidor() {
+        System.out.println("Buscando un repartidor disponible para un pedido de encomienda...");
     }
 
-    protected void asignarRepartidor(String nombreRepartidor) {
-
+    public void asignarRepartidor(String nombreRepartidor) {
+        System.out.println("Pedido de encomienda asignado a " + nombreRepartidor + ".\n");
     }
 }
