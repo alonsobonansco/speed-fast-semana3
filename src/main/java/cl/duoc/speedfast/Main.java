@@ -17,7 +17,6 @@ import cl.duoc.speedfast.strategy.DespachoMoto;
 public class Main {
     public static void main(String[] args) {
         ControladorDeEnvios gestor = new ControladorDeEnvios();
-        //estor.ejecutarDemostracion();
 
         Pedido pedidoComida = new PedidoComida(
                 "001", "Avenida Alemania 456", 5.2, new DespachoMoto(), true);
@@ -26,7 +25,6 @@ public class Main {
         Pedido pedidoEncomienda = new PedidoEncomienda(
                 "003", "Calle Principal 123", 14.0,
                 new DespachoCamion(), 84.0);
-
 
         // PROCESAMIENTO PEDIDO COMIDA #001 (CON CAMBIO DE ESTRATEGIA)
         pedidoComida.mostrarResumen();
@@ -43,7 +41,6 @@ public class Main {
         pedidoComida.despachar();
         gestor.registrarEstadoPedido(pedidoComida);
 
-
         // PROCESAMIENTO PEDIDO EXPRESS #002
         pedidoExpress.mostrarResumen();
         pedidoExpress.asignarRepartidor();
@@ -54,7 +51,6 @@ public class Main {
         }
 
         gestor.registrarEstadoPedido(pedidoExpress);
-
 
         // PROCESAMIENTO PEDIDO ENCOMIENDA #003 (CON CANCELACIÓN)
         // La cancelación ocurre internamente al (validarPedido) y este no pasa el control
@@ -70,6 +66,5 @@ public class Main {
 
         // HISTORIAL DEL ESTADO DE TODOS LOS PEDIDOS
         gestor.verHistorial();
-
     }
 }

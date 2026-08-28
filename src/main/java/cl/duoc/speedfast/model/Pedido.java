@@ -2,8 +2,6 @@ package cl.duoc.speedfast.model;
 
 import cl.duoc.speedfast.strategy.DespachoStrategy;
 
-import java.util.List;
-
 /**
  * Clase genérica de un pedido y superclase de subtipos de pedidos.
  */
@@ -154,9 +152,5 @@ public abstract class Pedido implements Despachable, Cancelable {
 
     public boolean isPedidoActivo() {
         return pedidoActivo;
-    }
-
-    public void setPedidoActivo(boolean pedidoActivo) {
-        this.pedidoActivo = pedidoActivo;
     }
 }
