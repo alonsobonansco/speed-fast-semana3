@@ -2,9 +2,22 @@ package cl.duoc.speedfast.model;
 
 import cl.duoc.speedfast.strategy.DespachoStrategy;
 
+/**
+ * Subclase de Pedido. Su atributo propio es mochilaEnBuenEstado para verificar que
+ * la comida llegue en óptimas condiciones.
+ */
 public class PedidoComida extends Pedido {
     private boolean mochilaEnBuenEstado;
 
+    /**
+     * Construye un pedido de comida.
+     *
+     * @param idPedido            Identificador único de la orden.
+     * @param direccionEntrega    Destino físico del despacho.
+     * @param distanciaKm         Trayecto en kilómetros.
+     * @param estrategiaDespacho  Estrategia que recibe para despachar.
+     * @param mochilaEnBuenEstado true si la mochila térmica está operativa; false si está dañada.
+     */
     public PedidoComida(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho, boolean mochilaEnBuenEstado) {
         super("PEDIDO COMIDA", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
         this.mochilaEnBuenEstado = mochilaEnBuenEstado;

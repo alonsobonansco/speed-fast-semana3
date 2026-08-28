@@ -3,17 +3,27 @@
 Actividad sumativa 1 (Semana 3)
 
 ## 📖 Descripción
-Este proyecto es una aplicación desarrollada en Java y Maven que simula el flujo logístico de una empresa de reparto a domicilio. El objetivo principal es resolver el control de los pedidos y la asignación de vehículos de forma modular, aplicando el **Patrón de Diseño Strategy** para cambiar los métodos de envío en tiempo de ejecución.
+
+Este proyecto es una aplicación desarrollada en Java y Maven que simula el flujo logístico de una empresa de reparto a
+domicilio. El objetivo principal es resolver el control de los pedidos y la asignación de vehículos de forma modular,
+aplicando el **Patrón de Diseño Strategy** para cambiar los métodos de envío en tiempo de ejecución.
 
 ---
 
 ## 🚀 Cómo funciona el Patrón Strategy en el Proyecto
-El patrón Strategy se utiliza para que las clases que representan a los pedidos no queden amarradas a un único tipo de vehículo, permitiendo cambiar el transporte en ejecución dependiendo de las condiciones.
+
+El patrón Strategy se utiliza para que las clases que representan a los pedidos no queden amarradas a un único tipo de
+vehículo, permitiendo cambiar el transporte en ejecución dependiendo de las condiciones.
 
 El flujo de datos en la memoria opera bajo tres reglas:
-1. **El Pedido tiene la Estrategia:** La superclase `Pedido` guarda una referencia a la interfaz `DespachoStrategy`. Esto permite que cada objeto individual maneje su propio vehículo y exponga el método `setEstrategiaDespacho()`.
-2. **Uso del parámetro `this`:** Al llamar al método `.despachar()`, el pedido se envía a sí mismo como argumento hacia la estrategia activa mediante la línea `estrategiaDespacho.despacharPedido(this)`.
-3. **Estrategias sin atributos propios:** Las clases concretas (`DespachoMoto`, `DespachoCamion`, `DespachoAuto`) no guardan variables internas. Solo reciben el pedido por parámetro y ejecutan la impresión, optimizando el uso de la memoria RAM.
+
+1. **El Pedido tiene la Estrategia:** La superclase `Pedido` guarda una referencia a la interfaz `DespachoStrategy`.
+   Esto permite que cada objeto individual maneje su propio vehículo y exponga el método `setEstrategiaDespacho()`.
+2. **Uso del parámetro `this`:** Al llamar al método `.despachar()`, el pedido se envía a sí mismo como argumento hacia
+   la estrategia activa mediante la línea `estrategiaDespacho.despacharPedido(this)`.
+3. **Estrategias sin atributos propios:** Las clases concretas (`DespachoMoto`, `DespachoCamion`, `DespachoAuto`) no
+   guardan variables internas. Solo reciben el pedido por parámetro y ejecutan la impresión, optimizando el uso de la
+   memoria RAM.
 
 ---
 

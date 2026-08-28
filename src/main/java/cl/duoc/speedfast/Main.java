@@ -9,6 +9,11 @@ import cl.duoc.speedfast.strategy.DespachoAuto;
 import cl.duoc.speedfast.strategy.DespachoCamion;
 import cl.duoc.speedfast.strategy.DespachoMoto;
 
+/**
+ * Punto de entrada de la aplicación SpeedFast.
+ * Actúa como el entorno de ejecución y pruebas para simular
+ * el comportamiento secuencial de los flujos de despacho en la consola.
+ */
 public class Main {
     public static void main(String[] args) {
         ControladorDeEnvios gestor = new ControladorDeEnvios();

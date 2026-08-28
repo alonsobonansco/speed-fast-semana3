@@ -2,10 +2,22 @@ package cl.duoc.speedfast.model;
 
 import cl.duoc.speedfast.strategy.DespachoStrategy;
 
+/**
+ * Subclase de Pedido. Su atributo propio es LIMITE_DISTANCIA_KM: valor límite que un
+ * repartidor puede estar del objetivo para realizar la entrega.
+ */
 public class PedidoExpress extends Pedido {
 
     private static final double LIMITE_DISTANCIA_KM = 20;
 
+    /**
+     * Construye un pedido express.
+     *
+     * @param idPedido           Identificador único de la orden.
+     * @param direccionEntrega   Destino físico del despacho.
+     * @param distanciaKm        Trayecto en kilómetros.
+     * @param estrategiaDespacho Estrategia que recibe para despachar.
+     */
     public PedidoExpress(String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
         super("PEDIDO EXPRESS", idPedido, direccionEntrega, distanciaKm, estrategiaDespacho);
     }
