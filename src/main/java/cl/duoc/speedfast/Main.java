@@ -27,41 +27,22 @@ public class Main {
                 new DespachoCamion(), 84.0);
 
         // PROCESAMIENTO PEDIDO COMIDA #001 (CON CAMBIO DE ESTRATEGIA)
-        pedidoComida.mostrarResumen();
-        pedidoComida.asignarRepartidor();
-        pedidoComida.asignarRepartidor("Roberto");
-
-        if (pedidoComida.validarPedido()) {
-            pedidoComida.despachar();
-        }
+        gestor.procesarDespacho(pedidoComida, "Roberto");
 
         System.out.println("[Condiciones climáticas obligan a cambiar de vehículo de despacho...]\n");
+
         // La estrategia cambia de Moto a Auto
         pedidoComida.setEstrategiaDespacho(new DespachoAuto());
         pedidoComida.despachar();
         gestor.registrarEstadoPedido(pedidoComida);
 
         // PROCESAMIENTO PEDIDO EXPRESS #002
-        pedidoExpress.mostrarResumen();
-        pedidoExpress.asignarRepartidor();
-        pedidoExpress.asignarRepartidor("Mario");
-
-        if (pedidoExpress.validarPedido()) {
-            pedidoExpress.despachar();
-        }
-
+        gestor.procesarDespacho(pedidoExpress, "Mario");
         gestor.registrarEstadoPedido(pedidoExpress);
 
         // PROCESAMIENTO PEDIDO ENCOMIENDA #003 (CON CANCELACIÓN)
         // La cancelación ocurre internamente al (validarPedido) y este no pasa el control
-        pedidoEncomienda.mostrarResumen();
-        pedidoEncomienda.asignarRepartidor();
-        pedidoEncomienda.asignarRepartidor("Luciano");
-
-        if (pedidoEncomienda.validarPedido()) {
-            pedidoEncomienda.despachar();
-        }
-
+        gestor.procesarDespacho(pedidoEncomienda, "Luciano");
         gestor.registrarEstadoPedido(pedidoEncomienda);
 
         // HISTORIAL DEL ESTADO DE TODOS LOS PEDIDOS

@@ -22,8 +22,7 @@ El flujo de datos en la memoria opera bajo tres reglas:
 2. **Uso del parámetro `this`:** Al llamar al método `.despachar()`, el pedido se envía a sí mismo como argumento hacia
    la estrategia activa mediante la línea `estrategiaDespacho.despacharPedido(this)`.
 3. **Estrategias sin atributos propios:** Las clases concretas (`DespachoMoto`, `DespachoCamion`, `DespachoAuto`) no
-   guardan variables internas. Solo reciben el pedido por parámetro y ejecutan la impresión, optimizando el uso de la
-   memoria RAM.
+   guardan variables internas. Solo reciben el pedido por parámetro y ejecutan la impresión.
 
 ---
 
@@ -37,7 +36,7 @@ speed-fast-semana-3/
             └── cl/
                 └── speedfast/                       
                     ├── Main.java                    # Ejecución y pruebas secuenciales
-                    ├── service/                     # Encargado de gestionar la List única
+                    ├── service/                     # Encargado de gestionar un pedido
                     │   └── ControladorDeEnvios.java  
                     ├── strategy/                    # Clases del Patrón Strategy
                     │   ├── DespachoStrategy.java    

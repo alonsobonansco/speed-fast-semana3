@@ -22,7 +22,7 @@ public abstract class Pedido implements Despachable, Cancelable {
      * @param direccionEntrega   Destino físico del despacho.
      * @param distanciaKm        Trayecto en kilómetros.
      * @param estrategiaDespacho Estrategia que recibe para despachar.
-     * @throws IllegalArgumentException Si el idPedido o la direccionEntrega están vacíos,o si
+     * @throws IllegalArgumentException Si el idPedido o la direccionEntrega están vacíos, o si
      *                                  la distancia es menor o igual a cero.
      */
     public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
@@ -68,11 +68,11 @@ public abstract class Pedido implements Despachable, Cancelable {
     @Override
     public void cancelar() {
         if (!pedidoActivo) {
-            System.out.println("El pedido #" + idPedido + " ya se encuentra cancelado.\n");
+            System.out.println("- El pedido #" + idPedido + " ya se encuentra cancelado.\n");
             return;
         }
         pedidoActivo = false;
-        System.out.println("El pedido #" + idPedido + " ha sido cancelado.\n");
+        System.out.println("- El pedido #" + idPedido + " ha sido cancelado.\n");
     }
 
     /**
