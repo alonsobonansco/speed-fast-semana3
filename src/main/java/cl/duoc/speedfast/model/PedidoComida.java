@@ -46,8 +46,4 @@ public class PedidoComida extends Pedido {
     public void asignarRepartidor() {
         System.out.println("Buscando un repartidor disponible para un pedido de comida...");
     }
-
-    public void setMochilaEnBuenEstado(boolean mochilaEnBuenEstado) {
-        this.mochilaEnBuenEstado = mochilaEnBuenEstado;
-    }
 }

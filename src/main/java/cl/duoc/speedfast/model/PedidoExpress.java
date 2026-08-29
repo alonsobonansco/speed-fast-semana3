@@ -7,7 +7,6 @@ import cl.duoc.speedfast.strategy.DespachoStrategy;
  * repartidor puede estar del objetivo para realizar la entrega.
  */
 public class PedidoExpress extends Pedido {
-
     private static final double LIMITE_DISTANCIA_KM = 20;
 
     /**

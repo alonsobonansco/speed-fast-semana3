@@ -8,7 +8,6 @@ import cl.duoc.speedfast.strategy.DespachoStrategy;
  * de la encomienda a enviar.
  */
 public class PedidoEncomienda extends Pedido {
-
     private static final double CAPACIDAD_MAXIMA_KG = 40.0;
     private final double pesoEncomienda;
 

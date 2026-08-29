@@ -26,7 +26,6 @@ public class ControladorDeEnvios implements Rastreable {
         }
     }
 
-
     @Override
     public void verHistorial() {
         if (historialPedidos.isEmpty()) {
@@ -47,7 +46,5 @@ public class ControladorDeEnvios implements Rastreable {
                 System.out.println("- " + pedido.getTipoPedido() + " #" + pedido.getIdPedido() + " - [Orden cancelada]");
             }
         }
-
     }
-
 }
