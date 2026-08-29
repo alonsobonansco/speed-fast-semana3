@@ -1,9 +1,7 @@
 package cl.duoc.speedfast.service;
 
-import cl.duoc.speedfast.model.*;
-import cl.duoc.speedfast.strategy.DespachoAuto;
-import cl.duoc.speedfast.strategy.DespachoCamion;
-import cl.duoc.speedfast.strategy.DespachoMoto;
+import cl.duoc.speedfast.model.Pedido;
+import cl.duoc.speedfast.model.Rastreable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,24 @@ import java.util.List;
  */
 public class ControladorDeEnvios implements Rastreable {
     private final List<Pedido> historialPedidos = new ArrayList<>();
+
+    /**
+     * Orquesta de forma automática las fases iniciales del ciclo operativo de un pedido.
+     *
+     * @param pedido           El objeto pedido.
+     * @param nombreRepartidor El nombre del repartidor asignado.
+     */
+    public void procesarDespacho(Pedido pedido, String nombreRepartidor) {
+        if (pedido == null) return;
+
+        pedido.mostrarResumen();
+        pedido.asignarRepartidor();
+        pedido.asignarRepartidor(nombreRepartidor);
+
+        if (pedido.validarPedido()) {
+            pedido.despachar();
+        }
+    }
 
     /**
      * Registra un pedido en el historial general de la aplicación.

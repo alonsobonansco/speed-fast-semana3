@@ -3,9 +3,8 @@ package cl.duoc.speedfast.model;
 import cl.duoc.speedfast.strategy.DespachoStrategy;
 
 /**
- * Subclase de Pedido. Sus atributos son CAPACIDAD_MAXIMA y pesoEncomienda. El primero es
- * el valor máximo permitido para el transporte y el personal, el segundo es el peso real
- * de la encomienda a enviar.
+ * Subclase de Pedido. Su atributo es CAPACIDAD_MAXIMA_KG: valor máximo
+ * permitido para el transporte y el personal.
  */
 public class PedidoEncomienda extends Pedido {
     private static final double CAPACIDAD_MAXIMA_KG = 40.0;

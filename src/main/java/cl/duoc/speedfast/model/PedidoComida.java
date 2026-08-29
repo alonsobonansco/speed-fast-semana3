@@ -7,7 +7,7 @@ import cl.duoc.speedfast.strategy.DespachoStrategy;
  * la comida llegue en óptimas condiciones.
  */
 public class PedidoComida extends Pedido {
-    private boolean mochilaEnBuenEstado;
+    private final boolean mochilaEnBuenEstado;
 
     /**
      * Construye un pedido de comida.
