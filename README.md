@@ -37,11 +37,6 @@ speed-fast-semana-3/
             └── cl/
                 └── speedfast/                       
                     ├── Main.java                    # Ejecución y pruebas secuenciales
-                    ├── interfaces/                  # Contratos de comportamiento
-                    │   ├── Cancelable.java
-                    │   ├── Despachable.java
-                    │   ├── Reservable.java
-                    │   └── Rastreable.java
                     ├── service/                     # Encargado de gestionar la List única
                     │   └── ControladorDeEnvios.java  
                     ├── strategy/                    # Clases del Patrón Strategy
@@ -49,7 +44,10 @@ speed-fast-semana-3/
                     │   ├── DespachoAuto.java        
                     │   ├── DespachoCamion.java      
                     │   └── DespachoMoto.java        
-                    └── model/                       # Clases del dominio
+                    └── model/                       # Clases del dominio e interfaces
+                        ├── Cancelable.java
+                        ├── Despachable.java
+                        ├── Rastreable.java
                         ├── Pedido.java              - Superclase
                         ├── PedidoComida.java        
                         ├── PedidoEncomienda.java    
