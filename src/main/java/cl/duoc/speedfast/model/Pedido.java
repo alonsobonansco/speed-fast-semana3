@@ -22,8 +22,8 @@ public abstract class Pedido implements Despachable, Cancelable {
      * @param direccionEntrega   Destino físico del despacho.
      * @param distanciaKm        Trayecto en kilómetros.
      * @param estrategiaDespacho Estrategia que recibe para despachar.
-     * @throws IllegalArgumentException Si el idPedido o la direccionEntrega están vacíos, o si
-     *                                  la distancia es menor o igual a cero.
+     * @throws IllegalArgumentException Si el idPedido, la direccionEntrega o la estrategiaDesoacho están vacíos,
+     *                                  o si la distancia es menor o igual a cero.
      */
     public Pedido(String tipoPedido, String idPedido, String direccionEntrega, double distanciaKm, DespachoStrategy estrategiaDespacho) {
         if (idPedido == null || idPedido.isBlank()) {
@@ -36,7 +36,7 @@ public abstract class Pedido implements Despachable, Cancelable {
         this.idPedido = idPedido;
         setDireccionEntrega(direccionEntrega);
         this.distanciaKm = distanciaKm;
-        this.estrategiaDespacho = estrategiaDespacho;
+        setEstrategiaDespacho(estrategiaDespacho);
     }
 
     /**
@@ -56,8 +56,12 @@ public abstract class Pedido implements Despachable, Cancelable {
      * Permite intercambiar la estrategia de despacho en tiempo de ejecución.
      *
      * @param estrategiaDespacho La nueva estrategia de despacho a inyectar en el pedido.
+     * @throws IllegalArgumentException Si la estrategia llega vacía.
      */
     public void setEstrategiaDespacho(DespachoStrategy estrategiaDespacho) {
+        if (estrategiaDespacho == null) {
+            throw new IllegalArgumentException("La estrategia es obligatoria.");
+        }
         this.estrategiaDespacho = estrategiaDespacho;
     }
 
